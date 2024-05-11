@@ -15,22 +15,22 @@ except IOError:
 
     config['default'] = {
         "jackett_apikey" : "foo",
-        "jackett_url" : "https://localhost/jackett",
+        "jackett_url" : "https://localhost:1234",
         "indexer_prefix" : "AUTO: "
     }
 
     config['sonarr'] = {
         "apikey": "foo",
-        "url" : "https://localhost/sonarr/api/",
-        "categoryPrefixes": ["TV"],
+        "url" : "https://localhost/sonarr/api/v3/",
+        "categoryPrefixes": ["TV",],
         "animeCategoryPrefixes": ["Anime","TV"]
 
     }
 
     config['radarr'] = {
         "apikey": "foo",
-        "url" : "https://localhost/radarr/api/",
-        "categoryPrefixes": ["Movies"],
+        "url" : "https://localhost/radarr/api/v3/",
+        "categoryPrefixes": ["Movies",],
         "animeCategoryPrefixes": ["Anime","Movies"]
 
     }
@@ -38,7 +38,7 @@ except IOError:
     config['lidarr'] = {
         "apikey": "foo",
         "url" : "https://localhost/lidarr/api/v1/",
-        "categoryPrefixes": ["Audio"],
+        "categoryPrefixes": ["Audio",],
 
     }
     with open('config.ini', 'w') as f:
