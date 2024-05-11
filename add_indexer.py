@@ -133,7 +133,10 @@ def add_indexers(app):
             try:
                 if exist != 0 and app_idxr['fields'][schema['fields'].index(section)]['value'] != section['value']:
                     changed = True
-                    print("Value changed ", section['name'], " ", section['value'], " ", app_idxr['fields'][schema['fields'].index(section)]['value'])
+                    if section['name'].lower() == "apikey":
+                        print("Value changed ", section['name'], " ", "[hidden]", " ", app_idxr['fields'][schema['fields'].index(section)]['value'])
+                    else:
+                        print("Value changed ", section['name'], " ", section['value'], " ", app_idxr['fields'][schema['fields'].index(section)]['value'])
             except:
                 if verbose:
                     print("No key Value!! in ", section['name'])
