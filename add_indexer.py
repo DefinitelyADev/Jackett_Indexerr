@@ -79,8 +79,8 @@ def add_indexers(app):
 
         schema['name'] = config['default']['indexer_prefix'] + " " + idxr['@id']
         for k in schema:
-            if "Search" in k or "Rss" in k:
-                schema[k]= 'true'
+            if ("Search" in k or "Rss" in k) and k != "seasonSearchMaximumSingleEpisodeAge": #This is a hack to remove the seasonSearchMaximumSingleEpisodeAge key generally there are better ways to do this I should change this filtering to check if the value is boolean.
+                schema[k]= True
                 if exist != 0 and app_idxr[k] != True:
                     changed = True
                     print(app_idxr['name'], " ", k, " ", app_idxr[k])
