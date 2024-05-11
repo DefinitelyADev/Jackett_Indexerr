@@ -27,6 +27,7 @@ jackett_indexers_url =  jackett_baseurl + "all/results/torznab/api?apikey=" + \
 app_indexers_url = "indexer"
 app_schema_url  = app_indexers_url + "/schema"
 verbose = False
+debug = False
 
 class MyHTTPRedirectHandler(request.HTTPRedirectHandler):
     def http_error_302(self, req, fp, code, msg, headers):
@@ -152,6 +153,8 @@ def add_indexers(app):
 
         if changed is not False:
             print("Trying to add: " + idxr['@id'] + " to " + app)
+            if debug:
+                print(json.dumps(schema, indent=4, sort_keys=True))
             r = requests.post(config[app]['url'] + app_indexers_url + "?apikey=" + config[app]['apikey'], json=schema)
 
             print("Finished: " + idxr['@id'] + " [" + str(r.status_code) + "]")
